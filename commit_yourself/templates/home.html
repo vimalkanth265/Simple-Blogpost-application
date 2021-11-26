@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title%}Home{% endblock %}
+{% block content %}
+
+{% if messages %}
+{%for message in messages%}
+
+<div class="alert alert-{{message.tags}}">
+    {{message}}
+</div>
+
+{%endfor%}
+
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-8">
+            {% for i in object_list %}
+                    <div class="card" >
+                        <div class="card-body">
+                        <h5 class="card-title">{{i.Title}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{i.DatePosted}}</h6>
+                        <p class="card-text">{{i.Content}}</p>
+                        <a href="{% url 'post-details' i.id %}" class="card-link btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                {% endfor %}
+           
+        
+           
+
+
+           
+
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+</div>
+
+{% endblock content %}
